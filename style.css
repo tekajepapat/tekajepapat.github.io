@@ -1138,6 +1138,13 @@ button  {
   font-weight: bold;
   color: #fff;
   text-shadow: 0 0 30px rgba(255, 255, 255, 1)
+  
+}
+button:focus,
+button:active,
+button:hover {
+  border-bottom: 1px solid #fff; /* Warna dan ketebalan garis bawah saat tombol aktif */
+  
 }
 #Footer {
 	background: linear-gradient(
