@@ -178,6 +178,7 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
     <main>
+      <!-- Header -->
       <div class="text-white px-[10%]" id="Home">
       <div class="font-bold text-5xl text-center py-10">XII TKJ 4</div>
         <header>
@@ -188,7 +189,6 @@
                 <h1 class="h1 ">Do The Best For Everything</h1>
                 <p>@ofc.tekajepapat</p>
             </a>
-            
         </header>
 <div
 					class="border-2 flex justify-between px-10 text-4xl font-bold py-2 relative"
@@ -222,7 +222,7 @@
                 </a>
             </ul>
         </section>
-
+<!-- About us -->
         <h1 class='titulo-sep'>About Us</h1>
        <section >
             <ul>
@@ -243,7 +243,6 @@
                     <h2>Tiktok</h2>
                     <span class='username text-black'>@???</span>
                 </a>
-                
                 <a href="https://ngl.link/ofc.tekajepapat">
                     <li
                     style="background: linear-gradient(to right, #EE1D52, #69C9D0);"  data-aos="fade-up" data-aos-duration="1000"     > 
@@ -252,7 +251,6 @@
                     <h2>Kirim Pesan</h2>
                     <span class='username text-black'>@ngl</span>
                 </a>
-
                 <a href="https://instagram.com/ofc.tekajepapat?igshid=NTc4MTIwNjQ2YQ==">
                     <li
                     style="background: linear-gradient(to right, #8e2de2, #e2c72d);"       data-aos="fade-up" data-aos-duration="2000"  >   
@@ -263,7 +261,6 @@
                 </a>
             </ul>
         </section> 
-
         <hr style="margin-top:10%;height:1px;border-width:0;color:white;background-color:gray">
 
         <h1 class='titulo-sep'>Lainnya</h1>
@@ -280,7 +277,6 @@
                 </a>
             </ul>
         </section>
-
 <div class="container2">
     <button id="strukturButton" onclick="showStruktur()">Structure</button>
     <span class="p-3">&amp;</span>
@@ -327,7 +323,6 @@
 </ul>
     </div>
   </div>
-
   <div id="jadwalContent" style="display:none;">
     <h1 class='titulo-sep'>Schedule</h1>
     <div class="schedule-table" >
@@ -351,7 +346,6 @@
           </tr>
  <thead>
           <tr>
-            
           </tr>
         </thead>
         <tbody>
@@ -366,7 +360,6 @@
           </tr>
  <thead>
           <tr>
-            
           </tr>
         </thead>
         <tbody>
@@ -391,7 +384,6 @@
             <td>Bahasa Indonesia </td>
             <td>2:10 PM</td>
           </tr>
-          <!-- Tambahkan jadwal lainnya sesuai kebutuhan -->
         </tbody>
  <thead>
           <tr>
@@ -416,11 +408,9 @@
             <td>PKK</td>
             <td>10:25 AM</td>
           </tr>
-          <!-- Tambahkan jadwal lainnya sesuai kebutuhan -->
         </tbody>
  <thead>
           <tr>
-
           </tr>
         </thead>
         <tbody>
@@ -429,7 +419,6 @@
             <td>Administrasi Sistem Jaringan</td>
             <td>7:30 AM</td>
           </tr>
-                 <!-- Tambahkan jadwal lainnya sesuai kebutuhan -->
         </tbody>
       </table>
     </div>
@@ -478,11 +467,9 @@
 								</li>
 							</ul>
 						</div>
-
 						<div className="hidden md:block">
 						</div>
 					</div>
-					
 					<div className="flex items-center justify-center mt-8 md:hidden" style="">
 					
 									  <div class="slider">
@@ -493,7 +480,6 @@
             </svg>
         </div>
     </div>
-
 </div>
 				</div>
 				</div>
@@ -511,61 +497,7 @@
  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script>var step = 100;
-
-$(".slider").each(function () {
-    var self = $(this);
-    var slider = self.slider({
-        create: function () {
-            self.find('.text strong').text(self.slider('value'));
-            setPathData(self.find('.smiley').find('svg path'), self.slider('value'));
-        },
-        slide: function (event, ui) {
-            self.find('.text strong').text(ui.value);
-            setPathData(self.find('.smiley').find('svg path'), ui.value);
-        },
-        range: 'min',
-        min: 1,
-        max: step,
-        value: 1,
-        step: 1 });
-
-});
-
-function setPathData(path, value) {
-    var firstStep = 6 / step * value;
-    var secondStep = 2 / step * value;
-    path.attr('d', 'M1,' + (7 - firstStep) + ' C6.33333333,' + (2 + secondStep) + ' 11.6666667,' + (1 + firstStep) + ' 17,' + (1 + firstStep) + ' C22.3333333,' + (1 + firstStep) + ' 27.6666667,' + (2 + secondStep) + ' 33,' + (7 - firstStep));
-}</script>
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-  <script>
-function showStruktur() {
-  document.getElementById('strukturContent').style.display = 'block';
-  document.getElementById('jadwalContent').style.display = 'none';
-}
-
-function showJadwal() {
-  document.getElementById('strukturContent').style.display = 'none';
-  document.getElementById('jadwalContent').style.display = 'block';
-}
-
-// Tampilkan struktur secara default
-showStruktur();
-
-  </script>
+  <script src="script.js"></script>
     </main>
     <script>
         feather.replace()
@@ -574,8 +506,5 @@ showStruktur();
 <script>
   AOS.init();
 </script>
-  
-    <!-- Messenger Plugin de bate-papo Code -->
-
 </body>
   </html>
