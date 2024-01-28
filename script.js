@@ -51,3 +51,18 @@ function showJadwal() {
 
 // Tampilkan struktur secara default
 showStruktur();
+
+//fungsi update year
+
+function updateCopyrightYear() {
+  const currentYear = new Date().getFullYear();
+  const copyrightElement = document.getElementById('copyrightYear');
+
+  if (copyrightElement) {
+    copyrightElement.textContent = `© ${currentYear} XII TKJ 4 | Dikelola Kelas TKJ 4`;
+  }
+}
+
+updateCopyrightYear();
+
+setInterval(updateCopyrightYear, 1000 * 60 * 60 * 24);
