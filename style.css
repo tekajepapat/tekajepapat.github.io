@@ -79,6 +79,63 @@ body {
 main{
   
 }
+#UserButton {
+	background: rgba(255, 255, 255, 0.14);
+	border-radius: 50%;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(6.9px);
+	-webkit-backdrop-filter: blur(6.9px);
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	margin: ;
+}
+
+#UserButton img {
+	filter: brightness(0) invert(1);
+}
+#PlayerButton{
+  	background: rgba(255, 255, 255, 0.14);
+	border-radius: 50%;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(6.9px);
+	-webkit-backdrop-filter: blur(6.9px);
+	border: 1px solid rgba(255, 255, 255, 0.09);
+}
+}
+#IsiNavbar {
+	/* From https://css.glass */
+	background-color: rgba(255, 255, 255, 0.14);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(6.9px);
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	padding: 16px;
+	z-index: 999;
+}
+#IsiNavbar {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+#IsiNavbar.menu-open {
+  transform: translateX(0);
+  
+}
+#Overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Warna overlay hitam dengan transparansi */
+  z-index: 99; /* Z-index harus lebih tinggi dari z-index isi navbar */
+  pointer-events: none; /* Set pointer-events ke none secara default */
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-open #Overlay {
+  display: block;
+  pointer-events: auto; /* Aktifkan pointer-events saat overlay terlihat */
+}
 #Home {
 	position: relative;
 	width: 100%;
