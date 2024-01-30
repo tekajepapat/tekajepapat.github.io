@@ -1,3 +1,35 @@
+
+ //Navbar
+  document.addEventListener('DOMContentLoaded', function () {
+  const userButton = document.getElementById('UserButton');
+  const isiNavbar = document.getElementById('IsiNavbar');
+  const overlay = document.getElementById('Overlay');
+  let isMenuOpen = false;
+
+  const toggleMenu = () => {
+    isMenuOpen = !isMenuOpen;
+    updateNavbar();
+  };
+
+  const updateNavbar = () => {
+  isiNavbar.classList.toggle('menu-open', isMenuOpen);
+  overlay.style.display = isMenuOpen ? 'block' : 'none';
+};
+
+  userButton.addEventListener('click', toggleMenu);
+
+  document.addEventListener('click', function (event) {
+    const isClickInsideNavbar = isiNavbar.contains(event.target) || userButton.contains(event.target);
+
+    if (!isClickInsideNavbar && isMenuOpen) {
+      isMenuOpen = false;
+      updateNavbar();
+    }
+  });
+
+  updateNavbar();
+});
+
 //fungsi rating
 
  var step = 100;
@@ -53,7 +85,6 @@ function showJadwal() {
 showStruktur();
 
 //fungsi update year
-
 function updateCopyrightYear() {
   const currentYear = new Date().getFullYear();
   const copyrightElement = document.getElementById('copyrightYear');
@@ -64,5 +95,4 @@ function updateCopyrightYear() {
 }
 
 updateCopyrightYear();
-
 setInterval(updateCopyrightYear, 1000 * 60 * 60 * 24);
