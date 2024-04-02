@@ -24,6 +24,8 @@
     <script src="/path/to/cdn/jquery.min.js"></script>
     <script src="scripts/slide.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
+    <script src="script.js" defer></script>
     <style>
         .slider {
   width: 320px;
@@ -149,6 +151,48 @@
   color: #000;
   font-weight: bold;
 }
+.swiper {
+  margin: 20px;
+  max-width:1200px;
+  justify-content:center;
+  
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.swiper-slide img {
+  display: block;
+  width: 80px;
+  max-width: 800px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+
+.swiper {
+  --swiper-theme-color: cyan;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+}
+.our-gallery{
+    color: #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 0 0 30px rgba(255, 225, 255, 1)
+}
+
     </style>
 </head>
 <body class="w-full" id="body" style="background:#090a0f;">
@@ -251,6 +295,56 @@
                 </a>
             </ul>
         </section>
+<h1 class='our-gallery' style="" >Our Gallery</h1>
+        <div class="wrapper flex justify-center items-center " style="">
+              <div class="swiper" style="margin:20px; border-radius:20px; ">
+      <div class="swiper-wrapper " style="
+      width:21rem; height:20rem;" >
+        <div class="swiper-slide" style="background-image: url('1.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position:center ; ">
+         
+        </div>
+        <div class="swiper-slide" style="background-image: url('2.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position: center bottom; ">
+        </div>
+        <div class="swiper-slide" style="background-image: url('3.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position: center ;">
+
+        </div>
+        <div class="swiper-slide" style="background-image: url('9.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position: center bottom;">
+
+        </div>
+        <div class="swiper-slide" style="background-image: url('5.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position: center bottom;">
+          
+        </div>
+        <div class="swiper-slide" style="background-image: url('6.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position: center bottom;">
+
+        </div>
+                <div class="swiper-slide" style="background-image: url('7.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position: center ;">
+
+        </div>
+                <div class="swiper-slide" style="background-image: url('10.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position: center ;">
+
+        </div>
+                <div class="swiper-slide" style="background-image: url('11.jpg') ;
+                        background-size: cover; background-repeat:no-repeat; background-position: center bottom;">
+
+        </div>
+      </div>
+
+      <div class="swiper-pagination"></div>
+
+    </div>
+	</div>
+
+
+
+
 <!-- About us -->
         <h1 class='titulo-sep' id="About Us" >About Us</h1>
        <section >
@@ -529,7 +623,8 @@
  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js"></script>   
+  <script src="slide.js" defer></script>
     </main>
     <script>
         feather.replace()
