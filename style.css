@@ -142,8 +142,8 @@ main{
 	height: auto;
 	background: radial-gradient(
 			circle,
-			rgba(224, 107, 213, 0.6520658263305322) 0%,
-			rgba(75, 57, 198, 0.9052871148459384) 100%
+			rgba(224, 107, 213, 0.5) 0%,
+			rgba(75, 57, 198, 0.5) 100%
 		),
 		url("bg2.png");
 	background-repeat: no-repeat;
