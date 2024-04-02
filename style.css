@@ -239,6 +239,46 @@ background: linear-gradient(to top, rgba(30, 30, 30, 1) 20%, rgba(30, 30, 30, 0)
 		0 0 15px rgba(255, 255, 255, 0.2);
 }
 
+.swiper {
+  margin: 20px;
+  max-width:1200px;
+  justify-content:center;
+  
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.swiper-slide img {
+  display: block;
+  width: 80px;
+  max-width: 800px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.swiper {
+  --swiper-theme-color: cyan;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+}
+.our-gallery{
+    color: #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 0 0 30px rgba(255, 225, 255, 1)
+}
 .titulo-sep{
     color: #6C3BED;
     margin-top: 5px;
