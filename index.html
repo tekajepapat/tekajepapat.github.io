@@ -21,11 +21,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css" />
     <link rel="stylesheet" href="scripts/slide.css" />
     <link rel="stylesheet" href="/path/to/font-awesome/all.min.css" />
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
     <script src="/path/to/cdn/jquery.min.js"></script>
     <script src="scripts/slide.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
-    <script src="slide.js" defer></script>
+    
     <style>
         .slider {
   width: 320px;
@@ -151,6 +152,35 @@
   color: #000;
   font-weight: bold;
 }
+.swiper {
+  margin: 20px;
+  max-width:1200px;
+  justify-content:center;
+  
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.swiper-slide img {
+  display: block;
+  width: 80px;
+  max-width: 800px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+
+.swiper {
+  --swiper-theme-color: cyan;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+}
     </style>
 </head>
 <body class="w-full" id="body" style="background:#090a0f;">
@@ -180,10 +210,12 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
     <main>
+
+      
       <!-- Header -->
       <div class="text-white px-[10%]" id="Home">
-	      <div id="app" style=""></div><!-- Tambahkan konten navbar di dalam elemen dengan id "IsiNavbar" -->
-       <div id="Overlay"></div>       
+              <div id="app" style=""></div><!-- Tambahkan konten navbar di dalam elemen dengan id "IsiNavbar" -->
+              
 <div id="IsiNavbar" class="fixed top-0 left-0 h-full w-64 text-white transform transition-transform duration-300 ease-in-out" style="background: rgba(255, 255, 255, 0.14);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(10px);
@@ -194,16 +226,16 @@
   <div class="mt-8">
     <a href="#" class="block py-2 px-4 text-lg font-bold hover:bg-gray-800 rounded-full">Home</a>
     <a href="#About Us" class="block py-2 px-4 text-lg font-bold hover:bg-gray-800 rounded-full">About Us</a>
-    <a href="#Structure" class="block py-2 px-4 text-lg font-bold hover:bg-gray-800 rounded-full">Structure&Schedule</a>
+    <a href="#Structure" class="block py-2 px-4 text-lg font-bold hover:bg-gray-800 rounded-full">Structure & Schedule</a>
   </div>
 </div>
 <div class="posisi">
   <div class="navbar flex justify-between relative top-3 mb-4 ${isMenuOpen ? 'hidden' : ''}" style="background-color: transparent;">
         <div class="ml-8 w-10 h-10 rounded-full flex justify-center items-center" id="UserButton">
-          <img src="NavIcon.png" alt="" class="rounded-full w-6 h-6 "  />
+          <img src="navIcon.png" alt="" class="rounded-full w-6 h-6 cursor-pointer" onclick="toggleMenu()" />
         </div>
         <div class="text-center text-white">
-          <div class="text-[0.8rem]">Hai, Kids!</div>
+          <div class="text-[0.7rem]">Hai, Kids!</div>
           <div class="font-bold text-[1rem]">SELAMAT DATANG</div>
         </div>
         <div class="mr-8 w-10 h-10 rounded-full flex justify-center items-center" id="PlayerButton">
@@ -211,9 +243,10 @@
         </div>
       </div>
 </div>
-      <div class="font-bold text-5xl text-center py-5">XII TKJ 4</div>
+
+      <div class="font-bold text-5xl text-center py-10">XII TKJ 4</div>
         <header>
-            <a href="#">
+            <a href="https://instagram.com/ofc.tekajepapat?igshid=NTc4MTIwNjQ2YQ==">
                 <img
                 src="profile.jpg"
                 alt="tkj4"  data-aos="fade-up" data-aos-duration="2000">
@@ -253,8 +286,8 @@
                 </a>
             </ul>
         </section>
-<h1 class='our-gallery' style="" >Our Gallery</h1>
-              <div class="wrapper-swiper flex justify-center items-center">
+        <h1 class='our-gallery' style="" >Our Gallery</h1>
+        <div class="wrapper-swiper flex justify-center items-center">
                   <div class="wrapper flex justify-center items-center " style="  margin:18px;
         background: rgba(255, 255, 255, 0.2);
             border-radius: 25px;
@@ -264,7 +297,7 @@
             border: 1px solid rgba(255, 255, 255, 0.09);">
               <div class="swiper" style="margin:20px; border-radius:20px; ">
       <div class="swiper-wrapper " style="
-      width:21rem; height:20rem;" >
+      width:21rem; height:19rem;" >
         <div class="swiper-slide" style="background-image: url('1.jpg') ;
                         background-size: cover; background-repeat:no-repeat; background-position:center ; ">
          
@@ -308,11 +341,10 @@
         </div>
         </div>
 
-
-
+        
 
 <!-- About us -->
-        <h1 class='titulo-sep' id="About Us" >About Us</h1>
+        <h1 class='titulo-sep' id="About Us">About Us</h1>
        <section >
             <ul>
                 <a href="https://spotify.link/k7CNcw3LlDb">
@@ -355,7 +387,7 @@
         <h1 class='titulo-sep'>Lainnya</h1>
         <section class="section">
             <ul  style="display :flex ; justify-content: center;">
-                <a href="memori.html">
+                <a href="rating.html">
                     <li
                         style="background: linear-gradient(to right, #8e2de2,
                         #4a00e0); width: 20rem;">
@@ -366,7 +398,7 @@
                 </a>
             </ul>
         </section>
-	    <!-- Structure & Schedule -->  
+ <!-- Structure & Schedule-->
 <div class="container2" id="Structure">
     <button id="strukturButton" onclick="showStruktur()">Structure</button>
     <span class="p-3">&amp;</span>
@@ -434,10 +466,6 @@
             <td>PPKN</td>
             <td>2:10 PM</td>
           </tr>
- <thead>
-          <tr>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td rowspan="2">Selasa</td>
@@ -448,10 +476,6 @@
             <td>Pend. Agama Islam</td>
             <td>1:30 PM</td>
           </tr>
- <thead>
-          <tr>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td rowspan="5">Rabu</td>
@@ -470,16 +494,11 @@
             <td> Matematika </td>
             <td>1:10 PM</td>
           </tr>
- <tr>
+          <tr>
             <td>Bahasa Indonesia </td>
             <td>2:10 PM</td>
           </tr>
         </tbody>
- <thead>
-          <tr>
-          
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td rowspan="4">Kamis</td>
@@ -499,10 +518,6 @@
             <td>10:25 AM</td>
           </tr>
         </tbody>
- <thead>
-          <tr>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td rowspan="">Jumat</td>
@@ -513,7 +528,7 @@
       </table>
     </div>
   </div>
-	      <!-- Footer -->
+  <!-- footer -->
 <footer class="my-7 rounded-xl grid grid-cols-1 md:flex md:justify-center md:grid-cols-3 mx-auto my-7 rounded-xl" id="Footer">
 			<div class="mx-auto w-full max-w-screen-xl px-8 py-6 lg:py-8 ">
 				<div class="footer  md:flex md:justify-between">
@@ -574,7 +589,7 @@
 </div>
 				</div>
 				</div>
-						<hr class="my-2 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+		<hr class="my-2 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 <div class="md:flex md:justify-center md:grid-cols-3 mx-auto">
   <div class="flex mt-4 justify-center sm:mt-0">
     <p class="text-[0.7rem] text-white opacity-70" id="copyrightYear">
@@ -582,16 +597,16 @@
     </p>
   </div>
 </div>
-				</div>
 			</div>
 		</footer>
 </div> 
  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script src="script.js"></script>   
-  <script src="slide.js" defer></script>
+     <script src="slide.js" defer></script>
+  <script src="script.js"></script>
     </main>
+    
     <script>
         feather.replace()
     </script>
@@ -600,4 +615,4 @@
   AOS.init();
 </script>
 </body>
-  </html>
+					</html>
