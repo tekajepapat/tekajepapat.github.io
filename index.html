@@ -152,35 +152,7 @@
   color: #000;
   font-weight: bold;
 }
-.swiper {
-  margin: 20px;
-  max-width:1200px;
-  justify-content:center;
-  
-}
 
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
- 
-}
-
-.swiper-slide img {
-  display: block;
-  width: 80px;
-  max-width: 800px;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-
-
-.swiper {
-  --swiper-theme-color: cyan;
-  --swiper-pagination-bullet-size: 8px;
-  --swiper-pagination-bullet-inactive-color: #fff;
-  --swiper-pagination-bullet-inactive-opacity: 0.4;
-}
     </style>
 </head>
 <body class="w-full" id="body" style="background:#090a0f;">
@@ -288,64 +260,27 @@
         </section>
 	<!-- Our Gallery-->
         <h1 class='our-gallery' style="" >Our Gallery</h1>
-        <div class="wrapper-swiper flex justify-center items-center">
-                  <div class="wrapper flex justify-center items-center md:w-3/4 lg:w-2/3 xl:w-1/2" style="  margin:18px;
-        background: rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(6.9px);
-            -webkit-backdrop-filter: blur(6.9px);
-            border: 1px solid rgba(255, 255, 255, 0.09);">
-              <div class="swiper md:w-3/4 lg:w-2/3 xl:w-1/2 " style="margin:20px; border-radius:20px; ">
-      <div class="swiper-wrapper " style="
-      width:20rem; height:19rem;" >
-        <div class="swiper-slide" style="background-image: url('/src/1.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position:center ; ">
-         
-        </div>
-        <div class="swiper-slide" style="background-image: url('/src/2.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position: center bottom; ">
-        </div>
-        <div class="swiper-slide" style="background-image: url('/src/3.jpg') ;
-                        background-size: cover ; background-repeat:no-repeat; background-position: center ;">
-
-        </div>
-        <div class="swiper-slide" style="background-image: url('/src/9.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position: center bottom;">
-
-        </div>
-        <div class="swiper-slide" style="background-image: url('/src/5.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position: center bottom;">
-          
-        </div>
-        <div class="swiper-slide" style="background-image: url('/src/6.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position:  bottom;">
-
-        </div>
-                <div class="swiper-slide" style="background-image: url('/src/7.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position: center ;">
-
-        </div>
-                <div class="swiper-slide" style="background-image: url('/src/10.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position: center ;">
-
-        </div>
-                <div class="swiper-slide" style="background-image: url('/src/11.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position: center bottom;">
-
-        </div>
-	      <div class="swiper-slide" style="background-image: url('/src/8.jpg') ;
-                        background-size: cover; background-repeat:no-repeat; background-position: center ;">
-
-	</div>
+<div class="wrapper-swiper flex justify-center items-center">
+  <div class="wrapper flex justify-center items-center md:w-3/4 lg:w-2/3 xl:w-1/2" style="margin:18px; background: rgba(255, 255, 255, 0.2); border-radius: 25px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(6.9px); -webkit-backdrop-filter: blur(6.9px); border: 1px solid rgba(255, 255, 255, 0.09);">
+    <div class="swiper md:w-3/4 lg:w-2/3 xl:w-1/2" style="margin:20px; border-radius:20px; ">
+      <div class="swiper-wrapper" style="width:21rem; height:20rem;">
+        <div class="swiper-slide" style="background-image: url('1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 10px;"></div>
+        <div class="swiper-slide" style="background-image: url('2.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center bottom; border-radius: 10px;"></div>
+        <div class="swiper-slide" style="background-image: url('3.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 10px;"></div>
+        <div class="swiper-slide" style="background-image: url('9.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center bottom; border-radius: 10px;"></div>
+        <div class="swiper-slide" style="background-image: url('5.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center bottom; border-radius: 10px;"></div>
+        <div class="swiper-slide" style="background-image: url('6.jpg'); background-size: cover; background-repeat: no-repeat; background-position: bottom; border-radius: 10px;"></div>
+        <div class="swiper-slide" style="background-image: url('7.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 10px;"></div>
+        <div class="swiper-slide" style="background-image: url('10.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 10px;"></div>
+        <div class="swiper-slide" style="background-image: url('11.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center bottom; border-radius: 10px;"></div>
       </div>
-
       <div class="swiper-pagination"></div>
-
     </div>
-        </div>
-        </div>
-
+  </div>
+</div>
+<div id="myModal" class="modal">
+  <img class="modal-content" id="modalImg">
+</div>
         
 
 <!-- About us -->
