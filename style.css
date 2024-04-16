@@ -603,14 +603,14 @@ body {
     }
 
     section ul li {
-        width: 10rem;
+        width: 19rem;
         max-width: 40rem;
         height: 90px;
     }
 
     section ul {
         gap: 1.5rem;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 
     span.new {
