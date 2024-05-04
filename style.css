@@ -292,23 +292,7 @@ position: fixed;
   max-height: 80%;
   border-radius: 20px;
 }
-.close {
-  position: relative;
-  display:flex;
-  justify-content:flex-end ;
-  padding: 0 0 10px 0 ;
-  color: #f0f0f0;
-  font-size: 40px;
-  font-weight: ;
-  transition: 0.3s;
-}
 
-.close:hover,
-.close:focus {
-  color: #6C3BED;
-  text-decoration: none;
-  cursor: pointer;
-}
 
 .our-gallery{
     color: #fff;
