@@ -201,7 +201,27 @@
       <!-- Header -->
       <div class="text-white px-[10%]" id="Home">
               <div id="app" style=""></div><!-- Tambahkan konten navbar di dalam elemen dengan id "IsiNavbar" -->
-              
+              <div class="containernavmusic relative">
+                <div id="IsiNavbarMusic" class="fixed top-0 left-0 h-full w-64 text-white transform transition-transform duration-500 ease-in-out" style="background: rgba(255, 255, 255, 0.14);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(6.9px);
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	padding: 16px;
+	z-index: 10;">
+  <div class=" text-center font-bold text-lg"><span class="">Music List🎧</span>
+    <button class="song-button block py-2 px-4 text-lg font-bold " onclick="playSong('/song/Taylor Swift - Style.mp3')">Style - Taylor</button>
+    <button class="song-button block py-2 px-4 text-lg font-bold " onclick="playSong('/song/daddyhome.mp3')">Daddy's Home</button>
+    <button class="song-button block py-2 px-4 text-lg font-bold " onclick="playSong('/song/Scott Street.mp3')">Scott Street</button>
+    <button class="song-button block py-2 px-4 text-lg font-bold " onclick="playSong('/song/Thousand Year.mp3')">Thousand Year</button>
+    <button class="song-button block py-2 px-4 text-lg font-bold " onclick="playSong('/song/Dj2024.mp3')">   DJ 😎😎</button>
+    <button class="song-button block py-2 px-4 text-lg font-bold " onclick="playSong('/song/DJ Kane.mp3')">DJ Kane 😎🥶</button>
+    <button class="song-button block py-2 px-4 text-lg font-bold " onclick="playSong('song/End Of Beginning.mp3')">End Of Beginning</button>
+    <button class="song-button block py-2 px-4 text-lg font-bold " onclick="playSong('/song/About You.mp3')">About You</button>
+    <button class="close-button block py-2 px-4 text-lg font-bold " id="closeButton" onclick="toggleMusicAlert()">Tutup</button>
+  </div>
+</div>
+              </div>
 <div id="IsiNavbar" class="fixed top-0 left-0 h-full w-64 text-white transform transition-transform duration-300 ease-in-out" style="background: rgba(255, 255, 255, 0.14);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(10px);
@@ -215,21 +235,22 @@
     <a href="#Structure" class="block py-2 px-4 text-lg font-bold hover:bg-gray-800 rounded-full">Structure & Schedule</a>
   </div>
 </div>
+
 <div class="posisi">
   <div class="navbar flex justify-between relative top-3 mb-4 ${isMenuOpen ? 'hidden' : ''}" style="background-color: transparent;">
         <div class="ml-8 w-10 h-10 rounded-full flex justify-center items-center" id="UserButton">
           <img src="/src/NavIcon.png" alt="" class="rounded-full w-6 h-6 cursor-pointer" onclick="toggleMenu()" />
         </div>
         <div class="text-center text-white">
-          <div class="text-[0.7rem]">Hai, Kids!</div>
+          <div class="text-[0.7rem]">Hai Kids!</div>
           <div class="font-bold text-[1rem]">SELAMAT DATANG</div>
         </div>
         <div class="mr-8 w-10 h-10 rounded-full flex justify-center items-center" id="PlayerButton">
-          <img src="/src/user.svg" alt="" />
+          <i class="fa-solid fa-music" onclick="toggleMenu()" /></i>
         </div>
       </div>
 </div>
-
+<div id="musicAlert" class="music-alert"></div>
       <div class="font-bold text-5xl text-center py-10">XII TKJ 4</div>
         <header>
             <a>
