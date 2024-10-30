@@ -1,28 +1,44 @@
 
- //Navbar
-  document.addEventListener('DOMContentLoaded', function () {
+ // Navbar
+document.addEventListener('DOMContentLoaded', function () {
   const userButton = document.getElementById('UserButton');
+  const playerButton = document.getElementById('PlayerButton');
   const isiNavbar = document.getElementById('IsiNavbar');
+  const isiNavbarMusic = document.getElementById('IsiNavbarMusic');
   const overlay = document.getElementById('Overlay');
   let isMenuOpen = false;
+  let isMusicOpen = false;
 
   const toggleMenu = () => {
     isMenuOpen = !isMenuOpen;
+    isMusicOpen = false; 
+    updateNavbar();
+  };
+
+  const toggleMusicMenu = () => {
+    isMusicOpen = !isMusicOpen;
+    isMenuOpen = false; 
     updateNavbar();
   };
 
   const updateNavbar = () => {
-  isiNavbar.classList.toggle('menu-open', isMenuOpen);
-  overlay.style.display = isMenuOpen ? 'block' : 'none';
-};
+    isiNavbar.classList.toggle('menu-open', isMenuOpen);
+    isiNavbarMusic.classList.toggle('menu-open', isMusicOpen);
+    overlay.style.display = isMenuOpen || isMusicOpen ? 'block' : 'none';
+  };
 
   userButton.addEventListener('click', toggleMenu);
+  playerButton.addEventListener('click', toggleMusicMenu);
 
   document.addEventListener('click', function (event) {
-    const isClickInsideNavbar = isiNavbar.contains(event.target) || userButton.contains(event.target);
+    const isClickInsideNavbar = isiNavbar.contains(event.target);
+    const isClickInsideNavbarMusic = isiNavbarMusic.contains(event.target);
+    const isClickInsideUserButton = userButton.contains(event.target);
+    const isClickInsidePlayerButton = playerButton.contains(event.target);
 
-    if (!isClickInsideNavbar && isMenuOpen) {
+    if (!isClickInsideNavbar && !isClickInsideNavbarMusic && !isClickInsideUserButton && !isClickInsidePlayerButton && (isMenuOpen || isMusicOpen)) {
       isMenuOpen = false;
+      isMusicOpen = false;
       updateNavbar();
     }
   });
@@ -81,7 +97,6 @@ function showJadwal() {
   document.getElementById('jadwalContent').style.display = 'block';
 }
 
-// Tampilkan struktur secara default
 showStruktur();
 
 //fungsi update year
@@ -95,4 +110,37 @@ function updateCopyrightYear() {
 }
 
 updateCopyrightYear();
-setInterval(updateCopyrightYear, 1000 * 60 * 60 * 24);
+setInterval(updateCopyrightYear, 1000 * 60 * 60 * 24);let currentAudio = null;
+
+function toggleMusicAlert() {
+  const musicAlert = document.getElementById('musicAlert');
+  if (musicAlert.style.display === 'none' || musicAlert.style.display === '') {
+      musicAlert.style.display = 'block';
+  } else {
+      musicAlert.style.display = 'none';
+  }
+
+  if (currentAudio) {
+      currentAudio.pause(); 
+      currentAudio.currentTime = 0;
+  }
+}
+
+function pauseMusic() {
+  if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0; // Atur waktu audio kembali ke awal
+  }
+}
+
+function playSong(song) {
+    
+    if (currentAudio) {
+        currentAudio.pause(); 
+        currentAudio.currentTime = 0; 
+    }
+
+    alert(`Memutar: ${song}`);
+    currentAudio = new Audio(song);
+    currentAudio.play();
+}
