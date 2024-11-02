@@ -146,7 +146,7 @@ let currentAudio = null;
 // }
 
 
-
+// Fungsi untuk menghentikan pemutaran lagu
 function pauseMusic() {
   if (currentAudio) {
       currentAudio.pause();
@@ -178,14 +178,14 @@ async function getAccessToken() {
   accessToken = data.access_token;
 }
 
-
+// Mencari lagu
 async function searchTracks(query) {
   const loadingElement = document.getElementById('loading');
   const resultsDiv = document.getElementById('results');
 
-  
+  // Tampilkan loading
   loadingElement.style.display = 'block';
-  resultsDiv.innerHTML = ''; 
+  resultsDiv.innerHTML = ''; // Kosongkan hasil sebelumnya
 
   try {
       const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track`, {
@@ -203,7 +203,7 @@ async function searchTracks(query) {
   } catch (error) {
       resultsDiv.innerText = 'Error: ' + error.message;
   } finally {
-     
+      // Sembunyikan loading
       loadingElement.style.display = 'none';
   }
 }
