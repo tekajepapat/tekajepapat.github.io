@@ -812,7 +812,9 @@ button:hover {
   font-size: 1.2rem;
   font-weight: bold;
 }
-
+.wrap-song button{
+  text-align:center;
+}
 .song-button {
   display: block;
   margin: 8px 0;
