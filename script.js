@@ -299,7 +299,7 @@ async function sendMessage() {
                 - Jika ada yang bertanya tentang sekolah SMKN 1 Giritontro maka jawablah dengan mengambil informasi di https://smkn1giritontro.sch.id/
                 - Jika disuruh menjelaskan mengenai jurusannya maka jelaskan sesuai pengetahuanmu.
                 - Jawab pertanyaan terkait dengan senang hati dan ramah, bahasanya jangan terlalu formal, pakai bahasa gen-Z.
-                - Jika pertanyaannya sudah tidak terkait maka jawab dengan senang hati juga dengan bahasa yang seperti tadi.
+                - Jika pertanyaannya sudah tidak terkait maka jawab dengan pengetahuanmu sebagai gemini ai yang tahu segalanya tentukannya dengan senang hati juga dan dengan bahasa yang seperti tadi.
                 Pertanyaan: ${message}`
             }]
         }]
