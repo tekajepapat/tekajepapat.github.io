@@ -295,6 +295,7 @@ async function sendMessage() {
                 - Sekolah berada di SMKN 1 Giritontro, Desa Giritontro.
                 - Kepala sekolah SMKN 1 Giritontro yaitu Bp. Mugiyono S.pd M.Eng.
                 - SMKN 1 Giritontro ada 4 jurusan : Teknik KOmputer dan Jaringan (TKJ) , Teknik Elektornika, Nautika Kapal Penagkap Ikan (NKPI), Tata Busana.
+                - Kalau ada yang bertanya prestasi kelas 12 TKJ 4, maka jawablah prestasinya pernah juara 1 futsal dua kali berturut-turut di Classmeting.
                 - Jika ada yang bertanya tentang sekolah SMKN 1 Giritontro maka jawablah dengan mengambil informasi di https://smkn1giritontro.sch.id/
                 - Jika disuruh menjelaskan mengenai jurusannya maka jelaskan sesuai pengetahuanmu.
                 - Jawab pertanyaan terkait dengan senang hati dan ramah, bahasanya jangan terlalu formal, pakai bahasa gen-Z.
