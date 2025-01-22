@@ -259,7 +259,7 @@ document.getElementById('searchButton').addEventListener('click', async () => {
   }
 });
 
-const apiKey = "AIzaSyAHPaSJZUm7f19aCJ3PYIEIKgJ52a6agY0"; // Ganti dengan API Key yang benar
+const apiKey = "AIzaSyAHPaSJZUm7f19aCJ3PYIEIKgJ52a6agY0"; 
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
+;pl
 async function sendMessage() {
     let userInput = document.getElementById("userInput");
     let chatBox = document.getElementById("chatBox");
@@ -282,10 +282,26 @@ async function sendMessage() {
     if (message === "") return;
 
     displayMessage(message, "user");
-    userInput.value = ""; // Kosongkan input setelah dikirim
+    userInput.value = ""; 
 
     const requestBody = {
-        contents: [{ parts: [{ text: message }] }]
+        contents: [{
+            parts: [{ 
+                text: `Jawab pertanyaan berikut dengan informasi ini:
+                - Kami adalah siswa/siswi kelas 12 TKJ 4.
+                - Kelas ini adalah kelas 12 TKJ 4.
+                - Jumlah murid 36, terdiri dari 12 laki-laki dan 24 perempuan. 
+                - Wali kelas ini adalah Bu Evi Andri Kurniawati S.Kom. 
+                - Sekolah berada di SMKN 1 Giritontro, Desa Giritontro.
+                - Kepala sekolah SMKN 1 Giritontro yaitu Bp. Mugiyono S.pd M.Eng.
+                - SMKN 1 Giritontro ada 4 jurusan : Teknik KOmputer dan Jaringan (TKJ) , Teknik Elektornika, Nautika Kapal Penagkap Ikan (NKPI), Tata Busana.
+                - Jika ada yang bertanya tentang sekolah SMKN 1 Giritontro maka jawablah dengan mengambil informasi di https://smkn1giritontro.sch.id/
+                - Jika disuruh menjelaskan mengenai jurusannya maka jelaskan sesuai pengetahuanmu.
+                - Jawab pertanyaan terkait dengan senang hati dan ramah tapi kalau bisa bahasanya jangan terlalu formal.
+                - Jika pertanyaannya sudah tidak terkait maka jawab dengan senang hati juga dengan bahasa yang seperti tadi.
+                Pertanyaan: ${message}`
+            }]
+        }]
     };
 
     try {
@@ -315,13 +331,34 @@ function displayMessage(text, sender) {
     let messageDiv = document.createElement("div");
 
     messageDiv.classList.add("p-2", "my-1", "rounded-lg", "max-w-xs", "break-words");
+
     if (sender === "user") {
         messageDiv.classList.add("bg-blue-500", "text-white", "ml-auto", "self-end");
+        messageDiv.textContent = text; // Tampilkan langsung untuk user
     } else {
         messageDiv.classList.add("bg-gray-300", "text-black", "mr-auto", "self-start");
+
+        
+        let span = document.createElement("span");
+        messageDiv.appendChild(span);
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        typeText(span, text);
+        return;
     }
 
-    messageDiv.textContent = text;
     chatBox.appendChild(messageDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function typeText(element, text, speed = 10) {
+    let i = 0;
+    function typing() {
+        if (i < text.length) {
+            element.textContent += text[i];
+            i++;
+            setTimeout(typing, speed); 
+        }
+    }
+    typing();
 }
