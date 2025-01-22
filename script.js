@@ -331,14 +331,13 @@ function displayMessage(text, sender) {
     let chatBox = document.getElementById("chatBox");
     let messageDiv = document.createElement("div");
 
-    messageDiv.classList.add("p-2", "my-1", "rounded-lg", "max-w-xs", "break-words");
+    messageDiv.classList.add("p-2", "my-1", "rounded-lg", "break-words");
 
     if (sender === "user") {
-        messageDiv.classList.add("bg-blue-500", "text-white", "ml-auto", "self-end");
+        messageDiv.classList.add("bg-blue-500", "text-white", "ml-auto", "self-end", "inline-block");
         messageDiv.textContent = text; // Tampilkan langsung untuk user
     } else {
         messageDiv.classList.add("bg-gray-300", "text-black", "mr-auto", "self-start");
-
         
         let span = document.createElement("span");
         messageDiv.appendChild(span);
