@@ -258,3 +258,70 @@ document.getElementById('searchButton').addEventListener('click', async () => {
       alert('Lebokno lagune sek..');
   }
 });
+
+const apiKey = "AIzaSyAHPaSJZUm7f19aCJ3PYIEIKgJ52a6agY0"; // Ganti dengan API Key yang benar
+const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sendButton = document.getElementById("sendButton");
+    const userInput = document.getElementById("userInput");
+
+    sendButton.addEventListener("click", sendMessage);
+    userInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+});
+
+async function sendMessage() {
+    let userInput = document.getElementById("userInput");
+    let chatBox = document.getElementById("chatBox");
+    let message = userInput.value.trim();
+
+    if (message === "") return;
+
+    displayMessage(message, "user");
+    userInput.value = ""; // Kosongkan input setelah dikirim
+
+    const requestBody = {
+        contents: [{ parts: [{ text: message }] }]
+    };
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, saya tidak bisa memahami.";
+            displayMessage(reply, "ai");
+        } else {
+            const errorText = await response.text();
+            console.error("Response Error:", errorText);
+            displayMessage("Error dalam mendapatkan respon.", "ai");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        displayMessage("Terjadi kesalahan saat menghubungi server.", "ai");
+    }
+}
+
+function displayMessage(text, sender) {
+    let chatBox = document.getElementById("chatBox");
+    let messageDiv = document.createElement("div");
+
+    messageDiv.classList.add("p-2", "my-1", "rounded-lg", "max-w-xs", "break-words");
+    if (sender === "user") {
+        messageDiv.classList.add("bg-blue-500", "text-white", "ml-auto", "self-end");
+    } else {
+        messageDiv.classList.add("bg-gray-300", "text-black", "mr-auto", "self-start");
+    }
+
+    messageDiv.textContent = text;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
