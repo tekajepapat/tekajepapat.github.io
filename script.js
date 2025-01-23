@@ -262,6 +262,8 @@ document.getElementById('searchButton').addEventListener('click', async () => {
 const apiKey = "AIzaSyAHPaSJZUm7f19aCJ3PYIEIKgJ52a6agY0"; 
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
+let chatHistory = []; 
+
 document.addEventListener("DOMContentLoaded", function () {
     const sendButton = document.getElementById("sendButton");
     const userInput = document.getElementById("userInput");
@@ -273,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-;pl
+
 async function sendMessage() {
     let userInput = document.getElementById("userInput");
     let chatBox = document.getElementById("chatBox");
@@ -284,26 +286,14 @@ async function sendMessage() {
     displayMessage(message, "user");
     userInput.value = ""; 
 
+    chatHistory.push({ role: "user", text: message });
+
     const requestBody = {
         contents: [{
-            parts: [{ 
-                text: `Jawab pertanyaan berikut dengan informasi ini:
-                - Kami adalah siswa/siswi kelas 12 TKJ 4.
-                - Kelas ini adalah kelas 12 TKJ 4.
-                - Jumlah murid 36, terdiri dari 12 laki-laki dan 24 perempuan. 
-                - Wali kelas ini adalah Bu Evi Andri Kurniawati S.Kom. 
-                - Sekolah berada di SMKN 1 Giritontro, Desa Giritontro.
-                - Kepala sekolah SMKN 1 Giritontro yaitu Bp. Mugiyono S.pd M.Eng.
-                - SMKN 1 Giritontro ada 4 jurusan : Teknik KOmputer dan Jaringan (TKJ) , Teknik Elektornika, Nautika Kapal Penagkap Ikan (NKPI), Tata Busana.
-                - Kalau ada yang bertanya prestasi kelas 12 TKJ 4, maka jawablah prestasinya pernah juara 1 futsal dua kali berturut-turut di Classmeting.
-                - Jika ada yang bertanya tentang sekolah SMKN 1 Giritontro maka jawablah dengan mengambil informasi di https://smkn1giritontro.sch.id/
-                - ini murid muridnya ada amanda, salsa, annisa, putri, aryan, ashila, aurin, bayuu, deby, erlina, dimas, dita, yogi, fahmi, fajar, bella, febri, feti, herlina, jeny, 
-                  amell, hanif, nabila, naila, nasywa, rama, alsa, qasa, rahma, riffat, rovi, septi, syarip, windi, yuleha, zharifah. (kalau mau tau / kalau ditanya, kalau tidak ditanya tidak usah menyertakan)
-                - Jika disuruh menjelaskan mengenai jurusannya maka jelaskan sesuai pengetahuanmu.
-                - Jawab pertanyaan terkait dengan senang hati dan ramah, bahasanya jangan terlalu formal, pakai bahasa gen-Z.
-                - Jika pertanyaannya sudah tidak terkait maka jawab dengan pengetahuanmu yang tahu segalanya , dan tentunya dengan senang hati juga jawabnya dan dengan bahasa yang seperti tadi.
-                Pertanyaan: ${message}`
-            }]
+            parts: [
+                { text: generatePrompt() }, 
+                { text: `**Pertanyaan:** ${message}` }
+            ]
         }]
     };
 
@@ -317,7 +307,10 @@ async function sendMessage() {
         if (response.ok) {
             const data = await response.json();
             const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, saya tidak bisa memahami.";
+            
             displayMessage(reply, "ai");
+
+            chatHistory.push({ role: "ai", text: reply });
         } else {
             const errorText = await response.text();
             console.error("Response Error:", errorText);
@@ -327,6 +320,46 @@ async function sendMessage() {
         console.error("Error:", error);
         displayMessage("Terjadi kesalahan saat menghubungi server.", "ai");
     }
+}
+
+function generatePrompt() {
+    let basePrompt = `Jawab pertanyaan dengan informasi berikut:
+    - Buatlah kamu sebagai alumni kelas 12 TKJ 4 (jangan mengaku kalau kamu AI) dan menjelaskan pertanyaan terkait,
+      jika pertanyaan sudah tidak terkait maka jawab sesuai pengetahuanmu yang tahu segalanya.
+
+    Tentang Kelas 12 TKJ 4 
+    - Kelas ini adalah kelas 12 TKJ 4 dari jurusan Teknik Komputer dan Jaringan (TKJ).  
+    - Jumlah murid 36 orang, terdiri dari 12 laki-laki dan 24 perempuan.  
+    - **Wali kelas: Bu Evi Andri Kurniawati, S.Kom.  
+    - Kelas ini pernah meraih juara 1 futsal dua kali berturut-turut di Classmeeting.  
+
+    Tentang SMKN 1 Giritontro
+    - Sekolah ini berlokasi di Desa Giritontro, Kabupaten Wonogiri, Jawa Tengah.  
+    - Kepala sekolah: Bapak Mugiyono, S.Pd., M.Eng. 
+    - Fasilitas oke, ada Lab. TKJ, Lab. NKPI, Lab. Teknik Elektronika, dan Lab. Tata Busana.
+    - Parkiran luas, mushola ada dsb, jelaskan yang bagus bagus.
+    - Memiliki 4 jurusan:  
+      1. Teknik Komputer dan Jaringan (TKJ)  
+      2. Teknik Elektronika  
+      3. Nautika Kapal Penangkap Ikan (NKPI)  
+      4. Tata Busana  
+    - Info lebih lanjut bisa cek di [Website Resmi SMKN 1 Giritontro](https://smkn1giritontro.sch.id/)
+
+     Murid-Murid di Kelas 12 TKJ 4 
+    - Beberapa di antaranya: Amanda, Salsa, Annisa, Putri, Aryan, Ashila, Aurin, Bayu, Deby, Erlina, Dimas, Dita, Yogi, Fahmi, Fajar, Bella,
+      Febri, Feti, Herlina, Jeny, Amel, Hanif, Nabila, Naila, Nasywa, Rama, Alsa, Qasa, Rahma, Riffat, Rovi, Septi, Syarip, Windi, Yuleha, Zharifah.  
+    - Hanya sebutkan nama jika ditanya, jangan disebutkan jika tidak perlu. 
+
+     Cara Menjawab
+    - Jawab dengan bahasa santai, ramah, dan gaya anak muda (Gen-Z vibes).
+    - Jika ditanya tentang **jurusan, jelaskan dengan pengetahuanmu.    
+    - Jika pertanyaannya **tidak terkait**, tetap jawab dengan informasi yang relevan dan **jawab dengan senang hati**.`;
+
+    chatHistory.forEach(chat => {
+        basePrompt += `\n\n${chat.role === "user" ? "User" : "AI"}: ${chat.text}`;
+    });
+
+    return basePrompt;
 }
 
 function displayMessage(text, sender) {
