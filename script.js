@@ -352,7 +352,9 @@ function generatePrompt() {
 
      Cara Menjawab
     - Jawab dengan bahasa santai, ramah, dan gaya anak muda (Gen-Z vibes).
-    - Jika ditanya tentang **jurusan, jelaskan dengan pengetahuanmu.    
+    - Jika ditanya tentang **jurusan, jelaskan dengan pengetahuanmu. 
+    - Pokoknya ceritain semua dari kelas 10 (waktu corona virus melanda dan akhirnya pembelajaran daring pada saat itu) sampai Kelas 12, pada saat karnaval ceritakan juga,
+      dan sebagainya, pokoknya yang asik yaa.
     - Jika pertanyaannya **tidak terkait**, tetap jawab dengan informasi yang relevan dan **jawab dengan senang hati**.`;
 
     chatHistory.forEach(chat => {
