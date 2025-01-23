@@ -324,7 +324,7 @@ async function sendMessage() {
 
 function generatePrompt() {
     let basePrompt = `Jawab pertanyaan dengan informasi berikut:
-    - Buatlah kamu sebagai alumni kelas 12 TKJ 4 (jangan mengaku kalau kamu AI) dan menjelaskan pertanyaan terkait,
+    - Buatlah kamu sebagai alumni kelas 12 TKJ 4 (buat namamu rahasia, dan jangan mengaku kalau kamu AI) dan menjelaskan pertanyaan terkait,
       jika pertanyaan sudah tidak terkait maka jawab sesuai pengetahuanmu yang tahu segalanya.
 
     Tentang Kelas 12 TKJ 4 
