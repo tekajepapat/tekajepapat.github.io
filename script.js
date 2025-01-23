@@ -331,25 +331,30 @@ async function sendMessage() {
 
 function displayMessage(text, sender) {
     let chatBox = document.getElementById("chatBox");
+    let messageContainer = document.createElement("div");
     let messageDiv = document.createElement("div");
 
-    messageDiv.classList.add("p-2", "my-1", "rounded-lg", "break-words");
+    messageContainer.classList.add("flex", "items-center", "my-1");
+    messageDiv.classList.add("p-2", "rounded-lg", "break-words", "max-w-xs");
 
     if (sender === "user") {
-        messageDiv.classList.add("bg-blue-500", "text-white", "ml-auto", "self-end", "inline-block");
-        messageDiv.textContent = text; // Tampilkan langsung untuk user
+        messageContainer.classList.add("flex-row-reverse"); 
+        messageDiv.classList.add("bg-gray-500", "text-white", "ml-auto");
+        messageDiv.textContent = text; 
     } else {
-        messageDiv.classList.add("bg-gray-300", "text-black", "mr-auto", "self-start");
-        
+        messageDiv.classList.add("bg-gray-300", "text-black", "mr-auto");
+
         let span = document.createElement("span");
         messageDiv.appendChild(span);
-        chatBox.appendChild(messageDiv);
+        messageContainer.appendChild(messageDiv);
+        chatBox.appendChild(messageContainer);
         chatBox.scrollTop = chatBox.scrollHeight;
         typeText(span, text);
         return;
     }
 
-    chatBox.appendChild(messageDiv);
+    messageContainer.appendChild(messageDiv);
+    chatBox.appendChild(messageContainer);
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
@@ -364,3 +369,4 @@ function typeText(element, text, speed = 10) {
     }
     typing();
 }
+
