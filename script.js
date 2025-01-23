@@ -156,8 +156,8 @@ function pauseMusic() {
 }
 
 
-const clientId = '8fa021d6754345208b87a086527318d8'; 
-const clientSecret = '1d34fe75dabb415e9b90e11fc82cb679'; 
+const clientId = '7549afe49a994aa9b36373aa3a0c5a36'; 
+const clientSecret = 'b8f048a0666c46f4ada33132167ba45b'; 
 let accessToken = '';
 
 
