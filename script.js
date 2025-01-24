@@ -358,7 +358,7 @@ function generatePrompt() {
     - Jika pertanyaannya **tidak terkait**, tetap jawab dengan informasi yang relevan dan **jawab dengan senang hati**.`;
 
     chatHistory.forEach(chat => {
-        basePrompt += `\n\n${chat.role === "user" ? "User" : "AI"}: ${chat.text}`;
+        basePrompt += `\n\n${chat.role === "user" ? "User" : ""}: ${chat.text}`;
     });
 
     return basePrompt;
