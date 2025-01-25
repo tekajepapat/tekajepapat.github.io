@@ -89,17 +89,27 @@ _gaq.push(['_trackPageview']);
 })();
 
 //fungsi struktur dan jadwal
-function showStruktur() {
-  document.getElementById('strukturContent').style.display = 'block';
-  document.getElementById('jadwalContent').style.display = 'none';
-}
+document.addEventListener("DOMContentLoaded", function() {
+    const strukturButton = document.getElementById("strukturButton");
+    const jadwalButton = document.getElementById("jadwalButton");
+    const strukturContent = document.getElementById("strukturContent");
+    const jadwalContent = document.getElementById("jadwalContent");
 
-function showJadwal() {
-  document.getElementById('strukturContent').style.display = 'none';
-  document.getElementById('jadwalContent').style.display = 'block';
-}
+    function showStruktur() {
+        strukturContent.style.display = "block";
+        jadwalContent.style.display = "none";
+    }
 
-showStruktur();
+    function showJadwal() {
+        strukturContent.style.display = "none";
+        jadwalContent.style.display = "block";
+    }
+
+    strukturButton.addEventListener("click", showStruktur);
+    jadwalButton.addEventListener("click", showJadwal);
+
+    showStruktur();
+});
 
 //fungsi update year
 function updateCopyrightYear() {
