@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
+
 // Navbar
 document.addEventListener('DOMContentLoaded', function () {
   const userButton = document.getElementById('UserButton');
@@ -113,7 +114,7 @@ function updateCopyrightYear() {
 updateCopyrightYear();
 setInterval(updateCopyrightYear, 1000 * 60 * 60 * 24);
 
-let currentAudio = null;
+
 
 // function toggleMusicAlert() {
 //   const musicAlert = document.getElementById('musicAlert');
@@ -158,108 +159,119 @@ function pauseMusic() {
   }
 }
 
-
 const clientId = '7549afe49a994aa9b36373aa3a0c5a36'; 
 const clientSecret = 'b8f048a0666c46f4ada33132167ba45b'; 
 let accessToken = '';
 
-
 async function getAccessToken() {
-  const response = await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Basic ' + btoa(`${clientId}:${clientSecret}`)
-      },
-      body: 'grant_type=client_credentials'
-  });
+    const response = await fetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + btoa(`${clientId}:${clientSecret}`)
+        },
+        body: 'grant_type=client_credentials'
+    });
 
-  if (!response.ok) {
-      throw new Error('Gagal mendapatkan token akses');
-  }
+    if (!response.ok) {
+        throw new Error('Gagal mendapatkan token akses');
+    }
 
-  const data = await response.json();
-  accessToken = data.access_token;
+    const data = await response.json();
+    accessToken = data.access_token;
+    console.log("Token akses diperbarui:", accessToken); // Debugging
 }
 
-// Mencari lagu
+// Fungsi untuk mencari lagu
 async function searchTracks(query) {
-  const loadingElement = document.getElementById('loading');
-  const resultsDiv = document.getElementById('results');
+    const loadingElement = document.getElementById('loading');
+    const resultsDiv = document.getElementById('results');
 
-  // Tampilkan loading
-  loadingElement.style.display = 'block';
-  resultsDiv.innerHTML = ''; // Kosongkan hasil sebelumnya
+    loadingElement.style.display = 'block';
+    resultsDiv.innerHTML = '';
 
-  try {
-      const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track`, {
-          headers: {
-              Authorization: `Bearer ${accessToken}`
-          }
-      });
+    try {
+        const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
 
-      if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-      const data = await response.json();
-      displayResults(data.tracks.items);
-  } catch (error) {
-      resultsDiv.innerText = 'Error: ' + error.message;
-  } finally {
-      // Sembunyikan loading
-      loadingElement.style.display = 'none';
-  }
+        const data = await response.json();
+        console.log("Data lagu:", data); // Debugging
+        displayResults(data.tracks.items);
+    } catch (error) {
+        resultsDiv.innerText = 'Error: ' + error.message;
+    } finally {
+        loadingElement.style.display = 'none';
+    }
 }
 
+// Fungsi untuk menampilkan hasil pencarian
 function displayResults(tracks) {
-  const resultsDiv = document.getElementById('results');
+    const resultsDiv = document.getElementById('results');
 
-  if (tracks.length === 0) {
-      resultsDiv.innerHTML = '<p>Ra ono Hasile</p>';
-      return;
-  }
+    if (tracks.length === 0) {
+        resultsDiv.innerHTML = '<p>Ra ono hasile</p>';
+        return;
+    }
 
-  tracks.forEach(track => {
-      const trackDiv = document.createElement('div');
-      trackDiv.className = 'track-block mb-2';
+    tracks.forEach(track => {
+        const trackDiv = document.createElement('div');
+        trackDiv.className = 'track-block mb-2';
 
-      const artistName = track.artists && track.artists.length > 0 ? track.artists[0].name : 'Goleki sing pener';
-      const previewUrl = track.preview_url;
+        const artistName = track.artists && track.artists.length > 0 ? track.artists[0].name : 'Goleki sing pener';
+        const previewUrl = track.preview_url;
 
-      trackDiv.innerHTML = `
-          <div class="track-info">
-              <span>${track.name} - ${artistName}</span>
-              ${previewUrl ? `<button onclick="playPreview('${previewUrl}')" class=" text-white p-1" style="border-bottom: 1px solid #fff;">Setel</button>` : previewUrl ? `<button class=" text-white p-1" style="border-bottom: 1px solid #fff;">Setel Preview</button>` : '<span >Ra Tersedia</span>'}
-          </div>
-      `;
-      resultsDiv.appendChild(trackDiv);
-  });
+        console.log(`Preview URL untuk ${track.name}:`, previewUrl); // Debugging
+
+        trackDiv.innerHTML = `
+            <div class="track-info">
+                <span>${track.name} - ${artistName}</span>
+                ${previewUrl ? `<button onclick="playPreview('${previewUrl}')" class="text-white p-1" style="border-bottom: 1px solid #fff;">Setel</button>` 
+                : '<span style="color: red;">Ra Tersedia</span>'}
+            </div>
+        `;
+        resultsDiv.appendChild(trackDiv);
+    });
 }
 
+// Variabel global untuk menyimpan audio yang sedang diputar
+
+
+// Fungsi untuk memutar preview lagu
 function playPreview(previewUrl) {
-  if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0; 
-  }
+    try {
+        if (!previewUrl) {
+            console.error("Tidak ada preview URL");
+            return;
+        }
 
-  currentAudio = new Audio(previewUrl);
-  currentAudio.loop = true;
-  currentAudio.play();
-
-  currentAudio.onended = function () {
-      currentAudio = null; 
-  };
+        currentAudio = new Audio(previewUrl);
+        currentAudio.play()
+            .catch(error => {
+                console.error("Error memainkan audio:", error);
+                // Tambahkan petunjuk untuk pengguna
+                alert("Tidak bisa memutar. Pastikan browser Anda mengizinkan pemutaran audio.");
+            });
+    } catch (error) {
+        console.error("Kesalahan saat mencoba memutar:", error);
+    }
 }
 
+// Event listener untuk tombol pencarian
 document.getElementById('searchButton').addEventListener('click', async () => {
-  await getAccessToken();
-  const query = document.getElementById('searchQuery').value.trim();
-  if (query) {
-      await searchTracks(query);
-  } else {
-      alert('Lebokno lagune sek..');
-  }
+    await getAccessToken(); // Perbarui token akses setiap pencarian
+    const query = document.getElementById('searchQuery').value.trim();
+    if (query) {
+        await searchTracks(query);
+    } else {
+        alert('Lebokno lagune sek..');
+    }
 });
 
 const firebaseConfig = {
@@ -452,5 +464,3 @@ function typeText(element, text, speed = 10) {
     }
     typing();
 }
-
-
