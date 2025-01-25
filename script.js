@@ -1,3 +1,6 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
 // Navbar
 document.addEventListener('DOMContentLoaded', function () {
   const userButton = document.getElementById('UserButton');
@@ -259,10 +262,22 @@ document.getElementById('searchButton').addEventListener('click', async () => {
   }
 });
 
+const firebaseConfig = {
+    apiKey: "AIzaSyC8GoHSphdYwm79h9Lf_eCglWVXZ3fWRt0",
+    authDomain: "chatan-71600.firebaseapp.com",
+    projectId: "chatan-71600",
+    storageBucket: "chatan-71600.firebasestorage.app",
+    messagingSenderId: "214008880924",
+    appId: "1:214008880924:web:6603ffafb56bbf172ca4d9",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const apiKey = "AIzaSyAHPaSJZUm7f19aCJ3PYIEIKgJ52a6agY0"; 
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
-let chatHistory = []; 
+let chatKita = [];
 
 document.addEventListener("DOMContentLoaded", function () {
     const sendButton = document.getElementById("sendButton");
@@ -278,15 +293,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function sendMessage() {
     let userInput = document.getElementById("userInput");
-    let chatBox = document.getElementById("chatBox");
     let message = userInput.value.trim();
 
     if (message === "") return;
 
     displayMessage(message, "user");
-    userInput.value = ""; 
+    userInput.value = ""; // Kosongkan input setelah dikirim
+    chatKita.push({ role: "user", text: message });
 
-    chatHistory.push({ role: "user", text: message });
+
+    await addDoc(collection(db, "chatHistory"), {
+        sender: "user",
+        text: message,
+        timestamp: serverTimestamp(),
+    });
 
     const requestBody = {
         contents: [{
@@ -304,13 +324,22 @@ async function sendMessage() {
             body: JSON.stringify(requestBody)
         });
 
+        console.log("API Response:", response); 
+
         if (response.ok) {
             const data = await response.json();
+            console.log("API Data:", data); 
             const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, saya tidak bisa memahami.";
-            
-            displayMessage(reply, "ai");
 
-            chatHistory.push({ role: "ai", text: reply });
+            displayMessage(reply, "ai");
+            chatKita.push({ role: "ai", text: reply });
+
+            await addDoc(collection(db, "chatHistory"), {
+                sender: "ai",
+                text: reply,
+                timestamp: serverTimestamp(),
+            });
+
         } else {
             const errorText = await response.text();
             console.error("Response Error:", errorText);
@@ -327,6 +356,7 @@ function generatePrompt() {
         - Buatlah kamu sebagai alumni kelas 12 TKJ 4 (buat namamu tetap rahasia, jangan sampai ada yang tahu namamu, dan jangan mengaku kalau kamu AI).
         - Jawab pertanyaan terkait dengan kelas, sekolah, dan pengalaman sebagai alumni TKJ 4 dengan detail dan gaya yang santai.
         - Jika pertanyaan tidak terkait, jawab sesuai pengetahuanmu yang luas dengan senang hati.
+        - Jawabnya singkat singkat dulu saja, jika disuruh cerita, baru kamu cerita.
 
         **Tentang Kelas 12 TKJ 4**
         - Kelas ini adalah kelas 12 TKJ 4 dari jurusan Teknik Komputer dan Jaringan (TKJ).  
@@ -373,12 +403,13 @@ function generatePrompt() {
 
         Dengan semua aturan ini, pastikan jawaban tetap terasa seperti alumni asli yang sedang ngobrol santai! 🚀🔥`;
 
-    chatHistory.forEach(chat => {
+    chatKita.forEach(chat => {
         basePrompt += `\n\n${chat.role === "user" ? "User" : ""}: ${chat.text}`;
     });
 
     return basePrompt;
 }
+
 
 function displayMessage(text, sender) {
     let chatBox = document.getElementById("chatBox");
@@ -409,6 +440,7 @@ function displayMessage(text, sender) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
+
 function typeText(element, text, speed = 10) {
     let i = 0;
     function typing() {
@@ -420,4 +452,5 @@ function typeText(element, text, speed = 10) {
     }
     typing();
 }
+
 
