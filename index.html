@@ -42,9 +42,10 @@
     <script src="/path/to/cdn/jquery.min.js"></script>
     <script src="scripts/slide.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"></script>
     <style>
         .slider {
   width: 310px;
@@ -202,7 +203,7 @@
       
       <!-- Header -->
       <div class="text-white px-[10%]" id="Home">
-              <div id="app" style=""></div><!-- Tambahkan konten navbar di dalam elemen dengan id "IsiNavbar" -->
+              <div id="app" ></div><!-- Tambahkan konten navbar di dalam elemen dengan id "IsiNavbar" -->
               <div class="containernavmusic relative">
                 <div id="IsiNavbarMusic" class="fixed top-0 left-0 h-full w-64 text-white transform transition-transform duration-500 ease-in-out" style="background: rgba(255, 255, 255, 0.14);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -224,7 +225,7 @@
     <div class="loading" id="loading" style="display: none;">Loading...</div>
     <input type="text" class="search-input block py-2 px-7 text-sm w-full text-white bg-transparent placeholder-white focus:outline-none  focus:border-white " style="outline: 2px solid white; border-radius: 10px;" id="searchQuery" placeholder="Masukkan Nama Lagu...">
     <button id="searchButton" class="">Cari</button>
-    <div id="results" class="outline" style=""></div>
+    <div id="results" class="outline"></div>
   </div>
 </div>
               </div>
@@ -300,7 +301,7 @@
             </ul>
         </section>
 	<!-- Our Gallery-->
-        <h1 class='our-gallery' style="" >Our Gallery</h1>
+        <h1 class='our-gallery' >Our Gallery</h1>
 <div class="wrapper-swiper flex justify-center items-center">
   <div class="wrapper flex justify-center items-center md:w-3/4 lg:w-2/3 xl:w-1/2" style="margin:auto; background: rgba(255, 255, 255, 0.2); border-radius: 25px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(6.9px); -webkit-backdrop-filter: blur(6.9px); border: 1px solid rgba(255, 255, 255, 0.09);">
     <div class="swiper md:w-3/4 lg:w-2/3 xl:w-1/2" style="margin:15px; border-radius:20px; ">
@@ -333,7 +334,7 @@
                     <li
                         style="background: linear-gradient(to right, #8e2de2,
                         #4a00e0);" data-aos="fade-right" data-aos-duration="600">
-                        <i class="fa-brands fa-spotify fa-3x" style="color: #fffff;"  data-aos="fade-right" data-aos-duration="550"  ></i>
+                        <i class="fa-brands fa-spotify fa-3x" style="color: #ffffff;"  data-aos="fade-right" data-aos-duration="550"></i>
                     </li>
                     <h2>Spotify</h2>
                     <span class='username text-black'>@tekajepapat</span>    
@@ -349,7 +350,7 @@
                 <a href="https://ngl.link/ofc.tekajepapat">
                     <li
                     style="background: linear-gradient(to right, #EE1D52, #69C9D0);"  data-aos="fade-right" data-aos-duration="600"     > 
-<i class="fa fa-paper-plane fa-3x" style ="color : #fffff;" aria-hidden="true"  data-aos="fade-right" data-aos-duration="550" ></i>
+<i class="fa fa-paper-plane fa-3x" style ="color : #ffffff;" aria-hidden="true"  data-aos="fade-right" data-aos-duration="550" ></i>
                     </li>
                     <h2>Kirim Pesan</h2>
                     <span class='username text-black'>@ngl</span>
@@ -481,7 +482,7 @@
             <td>2:10 PM</td>
           </tr>
         </tbody>
-        <tbody>
+        <tbody
           <tr>
             <td rowspan="4">Kamis</td>
             <td>Matematika</td>
@@ -510,21 +511,22 @@
       </table>
     </div>
   </div>
- <div class="outchat flex justify-center items-center m-7 ">
+  <div class="outchat flex justify-center items-center m-7">
     <div class="containerChat w-full max-w-md rounded-lg" style="background: rgba(255, 255, 255, 0.14);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(6.9px);
     border: 1px solid rgba(255, 255, 255, 0.09);
     padding: 16px;">
-      <h2 class="text-xl font-bold text-center mb-4 text-white">Takon Takon</h2>
-      <div id="chatBox" class="h-64 overflow-y-auto border p-3 rounded-lg bg-transparent"></div>
+      <h2 class="text-xl font-bold text-center mb-4 text-white" style="text-shadow: 0 0 30px rgba(255, 225, 255, 1)">Takon Takon</h2>
+      <div id="chatBox" class="h-80 w-full overflow-y-auto border p-3 rounded-lg bg-transparent"></div>
       <div class="flex mt-3">
           <input type="text" id="userInput" class="flex-1 p-2 border text-white bg-transparent rounded-l-lg outline-none" placeholder="Tulis pesan...">
           <button id="sendButton" class="border text-white px-4 py-2 rounded-r-lg"><i class="fa-regular fa-paper-plane"></i></button>
       </div>
   </div>
   </div>
+ 
   <!-- footer -->
 <footer class="my-7 rounded-xl grid grid-cols-1 md:flex md:justify-center md:grid-cols-3 mx-auto my-7 rounded-xl" id="Footer">
 			<div class="mx-auto w-full max-w-screen-xl px-8 py-6 lg:py-8 ">
@@ -573,7 +575,7 @@
 						<div className="hidden md:block">
 						</div>
 					</div>
-					<div className="flex items-center justify-center mt-8 md:hidden" style="">
+					<div className="flex items-center justify-center mt-8 md:hidden">
 					
 									  <div class="slider">
     <div class="ui-slider-handle">
@@ -601,7 +603,67 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
      <script src="slide.js" defer></script>
-  <script src="script.js"></script>
+     <script src="/socket.io/socket.io.js"></script>
+     <script src="chat.js"></script>
+
+  <script src="script.js" type="module">
+// const messageInput = document.getElementById('messageInput');
+//         const sendButton = document.getElementById('sendButton');
+//         const messagesDiv = document.getElementById('messages');
+
+//         // Membuat koneksi WebSocket
+//         const ws = new WebSocket('ws://localhost:3000');
+
+//         // Fungsi untuk menampilkan pesan
+//         function displayMessage(message) {
+//             const messageDiv = document.createElement('div');
+//             messageDiv.className = 'text-white';
+//             const icon = document.createElement('i');
+//             icon.className = 'fa-solid fa-user';
+//             icon.style.marginRight = '8px';
+//             icon.style.verticalAlign = 'middle';
+
+//             messageDiv.appendChild(icon);
+//             messageDiv.appendChild(document.createTextNode(message));
+//             messagesDiv.appendChild(messageDiv);
+//             messagesDiv.scrollTop = messagesDiv.scrollHeight;
+//         }
+
+//         // Menangani pesan yang diterima dari WebSocket
+//         ws.onmessage = function(event) {
+//             const messageData = JSON.parse(event.data);
+//             displayMessage(messageData.message);
+//         };
+
+//         // Menangani klik tombol kirim
+//         sendButton.addEventListener('click', function() {
+//     const message = messageInput.value.trim();
+//     if (message) {
+//         const dataToSend = { message: message, timestamp: Date.now() };
+
+//         // Kirim pesan ke WebSocket server
+//         ws.send(JSON.stringify(dataToSend));
+
+//         // Simpan pesan ke Firebase Realtime Database
+//         database.ref('messages').push(dataToSend)
+//             .then(() => console.log('Pesan berhasil disimpan di Firebase'))
+//             .catch((error) => console.error('Gagal menyimpan pesan ke Firebase:', error));
+
+//         messageInput.value = '';
+//     }
+// });
+
+//         // Memuat pesan yang ada di Firebase saat halaman dimuat
+//         database.ref('messages').on('child_added', function(snapshot) {
+//     const messageData = snapshot.val();
+//     if (messageData && messageData.message) {
+//         displayMessage(messageData.message);
+//     }
+// });
+
+
+  </script>
+  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
