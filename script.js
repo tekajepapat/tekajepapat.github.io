@@ -285,18 +285,18 @@ document.getElementById('searchButton').addEventListener('click', async () => {
 });
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC8GoHSphdYwm79h9Lf_eCglWVXZ3fWRt0",
-    authDomain: "chatan-71600.firebaseapp.com",
-    projectId: "chatan-71600",
-    storageBucket: "chatan-71600.firebasestorage.app",
-    messagingSenderId: "214008880924",
-    appId: "1:214008880924:web:6603ffafb56bbf172ca4d9",
+    apiKey: "AIzaSyCL_FJ4ApHKMscfATjDPl9nUwSKeTP2cPg",
+    authDomain: "backupchat-25cce.firebaseapp.com",
+    projectId: "backupchat-25cce",
+    storageBucket: "backupchat-25cce.firebasestorage.app",
+    messagingSenderId: "629128801316",
+    appId: "1:629128801316:web:24d0fe91d6e8ee7055fcb1",
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const apiKey = "AIzaSyAHPaSJZUm7f19aCJ3PYIEIKgJ52a6agY0"; 
+const apiKey = "AIzaSyDc37N9WYo2Tn3dTPD22VqwWY-Ivu-TeeY"; 
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
 let chatKita = [];
@@ -324,7 +324,7 @@ async function sendMessage() {
     chatKita.push({ role: "user", text: message });
 
 
-    await addDoc(collection(db, "chatHistory"), {
+    await addDoc(collection(db, "iniChat"), {
         sender: "user",
         text: message,
         timestamp: serverTimestamp(),
@@ -356,7 +356,7 @@ async function sendMessage() {
             displayMessage(reply, "ai");
             chatKita.push({ role: "ai", text: reply });
 
-            await addDoc(collection(db, "chatHistory"), {
+            await addDoc(collection(db, "iniChat"), {
                 sender: "ai",
                 text: reply,
                 timestamp: serverTimestamp(),
